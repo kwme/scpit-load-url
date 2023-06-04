@@ -30,7 +30,7 @@ async function test() {
     })
 
     for (const rr of links) {
-        const file = fs.createWriteStream(`file/${rr.name.replace(/ /g, '-')}.zip`);
+        const file = fs.createWriteStream(`file/${rr.name.replace(/\s/g, '-')}.zip`);
         const request = http.get(rr.link, async function(response) {
             response.pipe(file);
 
@@ -42,6 +42,7 @@ async function test() {
 
         });
         await delay();
+        return
     }
 
 }
