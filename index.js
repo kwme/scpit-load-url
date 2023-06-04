@@ -2,7 +2,9 @@ const axios = require('./callservice')
 const cheerio = require('cheerio')
 const http = require('https'); // or 'https' for https:// URLs
 const fs = require('fs');
-
+async function delay(ms = 500) {
+    return new Promise((r) => setTimeout(r, ms));
+}
 
 async function test() {
     const sss = await axios.post('https://mapdb.cncnet.org/search.php?game=yr&age=0&search=survival')
@@ -39,6 +41,7 @@ async function test() {
             });
 
         });
+        await delay();
     }
 
 }
